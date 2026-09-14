@@ -27,10 +27,11 @@ Note ton avancée après chaque TP. Reste factuel, sans données personnelles. C
 
 ## TP03 — Formulaire
 
-- Hypothèse :
-- Action :
-- Résultat :
+- Hypothèse : dans un `textarea`, Entrée insère un retour à la ligne et n'envoie pas le formulaire (contrairement à un `input` d'une ligne). Pour envoyer au clavier : Tab jusqu'à Envoyer puis Entrée.
+- Action : dans la section Discussion, après `ul#messages`, ajout de `form#chat-form` avec `label for="message"` « Votre message », `textarea#message` (`name="message"`, `rows="3"`, `required`, `maxlength="280"`) et `button type="submit"` « Envoyer ». Contenu de `fournitures/formulaire/app.js` recopié dans `atelier/public/js/app.js` (identique, vérifié avec `diff`). Footer ajusté en « Cap Web — version en attente… » car le JS remplace le span par « version dev ».
+- Résultat : page servie en 200, `/version.json` renvoie `{"version":"dev"}`. À vérifier au navigateur : clic sur l'étiquette place le curseur, Entrée dans le champ, envoi via Tab + Entrée, statut « Interface prête ; les réponses arrivent au J2. ».
 - Point non compris :
+- Défi (hypothèses à vérifier) : message vide bloqué par `required` avec bulle du navigateur, statut inchangé ; message d'espaces accepté par `required` donc statut mis à jour (d'où le futur `trim()`) ; message long coupé à 280 caractères à la saisie ou au collage.
 
 ## TP04 — Responsive
 
@@ -54,6 +55,7 @@ Mes essais :
 - Dossier : racine → `node --version` : `v26.8.1`
 - Dossier : racine → `git switch -c travail/kyliantvv/j1` : `Switched to a new branch 'travail/kyliantvv/j1'`
 - Dossier : `atelier` → `npm start` : `Cap Web prêt sur http://127.0.0.1:3000/`
+- Dossier : `atelier` → `npm start` (relance après arrêt du serveur pour manque de mémoire) : `Cap Web prêt sur http://127.0.0.1:3000/`
 - Problème exact si blocage : aucun (port 3000 libre, pas d'EADDRINUSE)
 
 Si Node ou Git bloque, note le message exact et continue en local sans attendre. Le double-clic sur `diagnostic/index.html` ne remplace pas le serveur pour les modules et l'envoi du TP03.

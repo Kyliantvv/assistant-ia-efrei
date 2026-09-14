@@ -16,10 +16,15 @@
     <section aria-labelledby="titre-chat">
       <h2 id="titre-chat">Discussion</h2>
       <ul id="messages" aria-label="Messages" aria-live="polite"></ul>
+      <form id="chat-form">
+        <label for="message">Votre message</label>
+        <textarea id="message" name="message" rows="3" required maxlength="280"></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
     </section>
   </main>
   <footer>
-    <p>Version : <span id="version">en attente…</span></p>
+    <p>Cap Web — <span id="version">version en attente…</span></p>
   </footer>
   <script type="module" src="./js/app.js"></script>
 </body>
