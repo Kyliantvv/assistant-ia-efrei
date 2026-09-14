@@ -56,15 +56,21 @@ Mes essais :
 - Dossier : racine → `git switch -c travail/kyliantvv/j1` : `Switched to a new branch 'travail/kyliantvv/j1'`
 - Dossier : `atelier` → `npm start` : `Cap Web prêt sur http://127.0.0.1:3000/`
 - Dossier : `atelier` → `npm start` (relance après arrêt du serveur pour manque de mémoire) : `Cap Web prêt sur http://127.0.0.1:3000/`
-- Problème exact si blocage : aucun (port 3000 libre, pas d'EADDRINUSE)
+- Dossier : `atelier` → `curl` sur `/`, `/js/app.js`, `/version.json` : `200`, `200`, `{"version":"dev"}`
+- Dossier : racine → `diff fournitures/formulaire/app.js atelier/public/js/app.js` : aucune différence
+- Dossier : racine → captures headless à 360 et 1280 px (TP04) : Chrome normal donne une capture fausse à 360 px (largeur minimale), `chrome-headless-shell` donne un rendu correct
+- Dossier : racine → `git status` (TP05) : `On branch 04-responsive`, `nothing to commit, working tree clean` ; travail déjà validé en commits `02-html`, `03-formulaire`, `04-responsive`
+- Problème exact si blocage : aucun (port 3000 libre, pas d'EADDRINUSE). Une fois : serveur en arrière-plan arrêté par le système pour manque de mémoire, relancé sans erreur.
 
 Si Node ou Git bloque, note le message exact et continue en local sans attendre. Le double-clic sur `diagnostic/index.html` ne remplace pas le serveur pour les modules et l'envoi du TP03.
 
 ## Auto-revue finale
 
-- Ce qui s'affiche bien :
-- Ce qui reste fragile au clavier ou à 360 px :
-- Ce que je veux revoir en capsule :
+- Prédiction TP05 : le TP03 demandera le plus de retravail demain (vraie discussion au J2, messages d'espaces encore acceptés, statut à brancher sur de vraies réponses). Comparaison avec les notes : c'est aussi le TP avec le plus de points « à vérifier au navigateur ».
+- Ce qui s'affiche bien : structure `header` / `main` / `section` / `footer`, un seul `h1`, formulaire avec étiquette, champ et bouton entiers à 360 et 1280 px, mot long qui passe à la ligne, version « dev » affichée en bas.
+- Ce qui reste fragile au clavier ou à 360 px : un message composé seulement d'espaces passe `required` ; `p#status` est au-dessus de la section, loin du bouton Envoyer, donc à 360 px on peut ne pas voir le statut changer après l'envoi ; grand espace vertical entre `header` et `main` (remplissages cumulés) ; focus visible et arbre d'accessibilité encore à vérifier à la main.
+- Ce que je veux revoir en capsule : `aria-live` et `role="status"` (quand l'annonce est lue), `aria-labelledby` vs `aria-label`, `overflow-wrap: anywhere` vs `word-break`, `trim()` pour refuser les messages vides.
+- Défi, amélioration pour demain : rapprocher `p#status` du formulaire (juste après le bouton) pour que l'annonce soit visible là où l'on vient d'agir.
 
 ## Rappel Git prudent
 
