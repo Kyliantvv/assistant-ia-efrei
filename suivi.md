@@ -11,10 +11,11 @@ Note ton avancée après chaque TP. Reste factuel, sans données personnelles. C
 
 ## TP01 — Démarrer
 
-- Hypothèse :
-- Action :
-- Résultat :
+- Hypothèse : Node >= 24.20 requis ; `npm start` suffit sans `npm ci`. Prédiction : si le serveur tourne mais que le JS ne charge pas, la page affiche le h1 « Cap Web » et le paragraphe « Le serveur fonctionne… », mais `p#status` reste vide (pas de « Votre point de départ est prêt. »).
+- Action : branche `travail/kyliantvv/j1` créée, serveur lancé depuis `atelier`, page ouverte sur http://127.0.0.1:3000. Repérage dans `atelier/public/index.html` : `<main>` contient `<h1>Cap Web</h1>`, un `<p>` d'intro et `<p id="status" role="status">` vide, rempli par `js/app.js` (module chargé en fin de body).
+- Résultat : serveur prêt, `/` et `/js/app.js` répondent 200. Statut de départ affiché : « Votre point de départ est prêt. ». Prédiction vérifiée : `app.js` ne fait que remplir `#status`, donc sans JS ce paragraphe reste vide.
 - Point non compris :
+- Défi : `diagnostic/index.html` utilise les titres selon leur taille plutôt que leur sens (h3 pour les infos, h4 pour le formulaire), utilise des `div` de mise en page et des placeholders comme exemples ; `atelier/public/index.html` est minimal, structuré par `main`, avec zone `role="status"` et JS en module. Utile TP02 : garder une hiérarchie de titres logique.
 
 ## TP02 — HTML
 
@@ -49,9 +50,10 @@ git diff
 
 Mes essais :
 
-- Dossier :
-- Commande et résultat :
-- Problème exact si blocage :
+- Dossier : racine → `node --version` : `v26.8.1`
+- Dossier : racine → `git switch -c travail/kyliantvv/j1` : `Switched to a new branch 'travail/kyliantvv/j1'`
+- Dossier : `atelier` → `npm start` : `Cap Web prêt sur http://127.0.0.1:3000/`
+- Problème exact si blocage : aucun (port 3000 libre, pas d'EADDRINUSE)
 
 Si Node ou Git bloque, note le message exact et continue en local sans attendre. Le double-clic sur `diagnostic/index.html` ne remplace pas le serveur pour les modules et l'envoi du TP03.
 
