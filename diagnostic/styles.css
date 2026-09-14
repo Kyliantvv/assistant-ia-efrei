@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: system-ui, Arial, sans-serif;
@@ -7,7 +13,7 @@ body {
 }
 
 .page {
-  width: 960px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 16px;
   background: #f6f6f6;
@@ -21,40 +27,55 @@ body {
 .titre-geant {
   font-size: 1.8rem;
   font-weight: bold;
+  overflow-wrap: break-word;
 }
 
 .contenu {
   background: #fff;
   border: 2px solid #333;
   padding: 24px;
-  width: 960px;
-}
-
-.etiquette {
-  margin-bottom: 4px;
-  color: #222;
+  width: 100%;
 }
 
 .contenu p {
   color: #555;
 }
 
+.contenu .etiquette {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  color: #222;
+}
+
 input {
-  width: 960px;
+  width: 100%;
   padding: 8px;
   border: 1px solid #888;
+  font: inherit;
 }
 
 .bouton {
-  width: 200px;
+  width: 100%;
+  max-width: 200px;
   padding: 10px;
   margin-top: 12px;
-  background: #ddd;
+  border: 0;
+  background: #1a56db;
+  color: #fff;
+  font: inherit;
   text-align: center;
   cursor: pointer;
 }
 
-.bouton {
-  background: #1a56db;
-  color: #fff;
+@media (max-width: 480px) {
+  .page,
+  .bandeau,
+  .contenu {
+    padding: 12px;
+  }
+
+  .titre-geant {
+    font-size: 1.5rem;
+  }
 }
