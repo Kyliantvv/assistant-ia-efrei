@@ -35,10 +35,10 @@ Note ton avancée après chaque TP. Reste factuel, sans données personnelles. C
 
 ## TP04 — Responsive
 
-- Hypothèse :
-- Action :
-- Résultat :
-- Point non compris, test 360 / 1280 :
+- Hypothèse : un mot de 60 lettres sans règle de césure ne peut pas passer à la ligne, il dépasse du conteneur étroit et crée un défilement horizontal à 360 px.
+- Action : dans `atelier/public/styles.css` uniquement : `box-sizing: border-box` pour tous les éléments ; `margin: 0` sur `body` ; `header`, `main`, `footer` en `width: 100%`, `max-width: 760px`, `margin-inline: auto`, `padding: 1rem` ; `#chat-form` en Flexbox colonne avec `gap` ; `textarea` à 100 % ; `overflow-wrap: anywhere` sur `#messages li` ; `:focus-visible` avec contour de 3 px ; tailles de titres plus marquées (h1 2.25rem, h2 1.5rem). Aucun `overflow: hidden`.
+- Résultat : test temporaire avec un `li` contenant un mot de 60 lettres, captures à 360 px et 1280 px : le mot passe à la ligne, champ entier, bouton visible, pas de débordement. `li` retiré ensuite, liste de nouveau vide.
+- Point non compris, test 360 / 1280 : captures faites en navigateur headless ; focus clavier et redimensionnement lent restent à vérifier à la main. Remarque : la première capture avec Chrome normal à 360 px était fausse (largeur minimale de fenêtre imposée), refaite avec chrome-headless-shell.
 
 ## Commandes essayées
 

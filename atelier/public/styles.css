@@ -1,2 +1,28 @@
-body { font-family: system-ui, sans-serif; margin: 2rem; color: #15213a; background: white; }
-main { max-width: 48rem; margin-inline: auto; }
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body { font-family: system-ui, sans-serif; margin: 0; color: #15213a; background: white; line-height: 1.5; }
+
+header,
+main,
+footer { width: 100%; max-width: 760px; margin-inline: auto; padding: 1rem; }
+
+h1 { font-size: 2.25rem; line-height: 1.2; margin-block: 0.5rem; }
+h2 { font-size: 1.5rem; line-height: 1.25; margin-block: 1.5rem 0.75rem; }
+
+#messages { padding-left: 1.25rem; }
+#messages li { overflow-wrap: anywhere; margin-block: 0.5rem; }
+
+#chat-form { display: flex; flex-direction: column; gap: 0.5rem; }
+
+textarea,
+button { font: inherit; }
+
+textarea { width: 100%; padding: 0.5rem; border: 1px solid #5a6478; border-radius: 4px; }
+
+button { align-self: flex-start; padding: 0.5rem 1.25rem; border: 1px solid #15213a; border-radius: 4px; background: #15213a; color: white; cursor: pointer; }
+
+:focus-visible { outline: 3px solid #1d5fd6; outline-offset: 2px; }
+
+footer { font-size: 0.875rem; color: #4a5468; }
