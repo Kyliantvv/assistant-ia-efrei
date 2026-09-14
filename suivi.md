@@ -19,10 +19,11 @@ Note ton avancée après chaque TP. Reste factuel, sans données personnelles. C
 
 ## TP02 — HTML
 
-- Hypothèse :
-- Action :
-- Résultat :
+- Hypothèse : remplacer `main` par `div` ne change rien au rendu visuel (les deux sont des blocs sans style par défaut), mais le repère « main » disparaît de l'arbre d'accessibilité : un lecteur d'écran ne peut plus sauter directement au contenu principal.
+- Action : dans `atelier/public/index.html`, `h1` Cap Web déplacé dans un `header` ; dans `main`, ajout d'une `section aria-labelledby="titre-chat"` avec `h2#titre-chat` « Discussion » et `ul#messages` vide (`aria-label="Messages"`, `aria-live="polite"`) ; `p#status role="status"` conservé une seule fois ; `footer` avec `span#version` « en attente… » ; script module vers `app.js` gardé. CSS et JS non modifiés.
+- Résultat : page servie en 200, un seul `h1`, un seul `#status`. À vérifier dans le navigateur : titres, repères banner / main / region « Discussion » / contentinfo dans l'arbre d'accessibilité.
 - Point non compris :
+- Défi : ordre des titres identique dans le HTML et l'arbre (h1 Cap Web puis h2 Discussion). Balise justifiée : `section` + `aria-labelledby` devient une région nommée « Discussion », donc un repère navigable ; sans nom, une `section` n'est pas exposée comme repère.
 
 ## TP03 — Formulaire
 
