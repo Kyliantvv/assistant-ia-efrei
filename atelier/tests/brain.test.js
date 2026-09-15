@@ -22,7 +22,7 @@ describe('replyTo', () => {
     assert.equal(replyTo('SALUT'), replyTo('salut'));
   });
 
-  it('donne à une phrase inconnue une réponse différente de « aide »', () => {
+  it('donne à une phrase inconnue une réponse différente de « aide » ', () => {
     const reponse = replyTo('quelle heure est-il ?');
     assert.equal(typeof reponse, 'string');
     assert.notEqual(reponse, replyTo('aide'));
