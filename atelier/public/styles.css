@@ -2,7 +2,45 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-body { font-family: system-ui, sans-serif; margin: 0; color: #15213a; background: white; line-height: 1.5; }
+/* Couleurs du thème clair. */
+:root {
+  --fond: #ffffff;
+  --texte: #15213a;
+  --discret: #4a5468;
+  --bordure: #5a6478;
+  --bulle-vous: #e3f1e7;
+  --bulle-bot: #eef1f5;
+  --focus: #1d5fd6;
+  color-scheme: light;
+}
+
+/* Thème sombre : préférence du système, sauf si l'utilisateur a choisi le clair. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fond: #10161f;
+    --texte: #e6ebf2;
+    --discret: #aab3c2;
+    --bordure: #8a94a6;
+    --bulle-vous: #1d3a27;
+    --bulle-bot: #222b38;
+    --focus: #7fb0ff;
+    color-scheme: dark;
+  }
+}
+
+/* Thème sombre choisi avec le bouton. */
+:root[data-theme="dark"] {
+  --fond: #10161f;
+  --texte: #e6ebf2;
+  --discret: #aab3c2;
+  --bordure: #8a94a6;
+  --bulle-vous: #1d3a27;
+  --bulle-bot: #222b38;
+  --focus: #7fb0ff;
+  color-scheme: dark;
+}
+
+body { font-family: system-ui, sans-serif; margin: 0; color: var(--texte); background: var(--fond); line-height: 1.5; }
 
 header,
 main,
@@ -11,20 +49,24 @@ footer { width: 100%; max-width: 760px; margin-inline: auto; padding: 1rem; }
 h1 { font-size: 2.25rem; line-height: 1.2; margin-block: 0.5rem; }
 h2 { font-size: 1.5rem; line-height: 1.25; margin-block: 1.5rem 0.75rem; }
 
-#messages { padding-left: 1.25rem; }
-#messages li { overflow-wrap: anywhere; margin-block: 0.5rem; }
+/* Conversation : vous à droite, Cap Web à gauche. */
+#messages { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+#messages li { max-width: 85%; overflow-wrap: anywhere; padding: 0.5rem 0.75rem; border-radius: 8px; background: var(--bulle-bot); align-self: flex-start; }
+#messages li[data-role="user"] { background: var(--bulle-vous); align-self: flex-end; }
 
 #chat-form { display: flex; flex-direction: column; gap: 0.5rem; }
 
 textarea,
 button { font: inherit; }
 
-textarea { width: 100%; padding: 0.5rem; border: 1px solid #5a6478; border-radius: 4px; }
+textarea { width: 100%; padding: 0.5rem; border: 1px solid var(--bordure); border-radius: 4px; background: var(--fond); color: var(--texte); }
 
-button { align-self: flex-start; padding: 0.5rem 1.25rem; border: 1px solid #15213a; border-radius: 4px; background: #15213a; color: white; cursor: pointer; }
+button { align-self: flex-start; padding: 0.5rem 1.25rem; border: 1px solid var(--texte); border-radius: 4px; background: var(--texte); color: var(--fond); cursor: pointer; }
+button:disabled { opacity: 0.6; cursor: wait; }
 
-#effacer { margin-top: 1rem; background: white; color: #15213a; }
+.outils { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.outils button { background: var(--fond); color: var(--texte); }
 
-:focus-visible { outline: 3px solid #1d5fd6; outline-offset: 2px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
-footer { font-size: 0.875rem; color: #4a5468; }
+footer { font-size: 0.875rem; color: var(--discret); }
