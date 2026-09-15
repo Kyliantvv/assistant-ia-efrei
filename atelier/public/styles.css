@@ -23,6 +23,8 @@ textarea { width: 100%; padding: 0.5rem; border: 1px solid #5a6478; border-radiu
 
 button { align-self: flex-start; padding: 0.5rem 1.25rem; border: 1px solid #15213a; border-radius: 4px; background: #15213a; color: white; cursor: pointer; }
 
+#effacer { margin-top: 1rem; background: white; color: #15213a; }
+
 :focus-visible { outline: 3px solid #1d5fd6; outline-offset: 2px; }
 
 footer { font-size: 0.875rem; color: #4a5468; }
