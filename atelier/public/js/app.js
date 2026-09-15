@@ -1,4 +1,5 @@
 import { validateMessage, replyTo } from './brain.js';
+import { renderMessages } from './view.js';
 
 const formulaire = document.querySelector('#chat-form');
 const statut = document.querySelector('#status');
@@ -6,7 +7,10 @@ const versionElt = document.querySelector('#version');
 const champ = document.querySelector('#message');
 const liste = document.querySelector('#messages');
 
-// Envoi : on affiche le message dans la liste, sans recharger la page.
+// Conversation : { role: 'user' | 'assistant', text }.
+const historique = [];
+
+// Envoi : on range le message et la réponse, puis on redessine.
 formulaire.addEventListener('submit', (event) => {
   event.preventDefault();
   const resultat = validateMessage(champ.value);
@@ -16,14 +20,11 @@ formulaire.addEventListener('submit', (event) => {
     return;
   }
 
-  // textContent : le texte reste du texte, jamais du HTML.
-  const li = document.createElement('li');
-  li.textContent = `Vous : ${resultat.value}`;
-  liste.append(li);
-
-  const reponse = document.createElement('li');
-  reponse.textContent = `Cap Web : ${replyTo(resultat.value)}`;
-  liste.append(reponse);
+  historique.push(
+    { role: 'user', text: resultat.value },
+    { role: 'assistant', text: replyTo(resultat.value) }
+  );
+  renderMessages(historique, liste);
 
   champ.value = '';
   statut.textContent = '';
