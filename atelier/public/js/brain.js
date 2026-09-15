@@ -1,16 +1,24 @@
-// Cerveau de Cap Web : valide et répond, sans jamais toucher au DOM.
+// Cerveau de Cap Web, assistant tri et recyclage : valide et répond, sans jamais toucher au DOM.
 
 const LONGUEUR_MAX = 280;
 
+const BONJOUR = 'Bonjour ! Je vous aide à trier vos déchets. Écrivez « aide ».';
+
 // Règles : mot connu -> réponse dédiée.
 const REPONSES = {
-  salut: 'Bonjour ! Écrivez « aide ».',
-  bonjour: 'Bonjour ! Écrivez « aide ».',
-  aide: 'Je connais « salut », « aide », « test ».',
-  test: 'Test reçu, tout fonctionne.'
+  salut: BONJOUR,
+  bonjour: BONJOUR,
+  aide: 'Je connais « salut », « aide », « test » et ces déchets : plastique, verre, papier, carton, pile, compost.',
+  test: 'Test reçu, le centre de tri est ouvert.',
+  plastique: 'Bouteilles, flacons, pots et films en plastique : bac jaune, bien vidés. Inutile de les laver.',
+  verre: 'Bouteilles, pots et bocaux en verre : colonne à verre, sans bouchon ni couvercle. La vaisselle et les vitres n’y vont pas.',
+  papier: 'Journaux, prospectus, enveloppes : bac jaune ou bac à papier selon votre commune.',
+  carton: 'Cartons et briques alimentaires : bac jaune, bien aplatis. Les gros cartons vont en déchetterie.',
+  pile: 'Piles et batteries : jamais à la poubelle. Déposez-les dans un bac de collecte en magasin ou en déchetterie.',
+  compost: 'Épluchures, restes de repas et marc de café : composteur ou bac à biodéchets.'
 };
 
-const REPLI = 'Je ne connais que trois mots.';
+const REPLI = 'Je ne connais pas encore ce déchet. Écrivez « aide » pour voir la liste.';
 
 export function validateMessage(raw) {
   if (typeof raw !== 'string') {

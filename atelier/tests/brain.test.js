@@ -27,4 +27,21 @@ describe('replyTo', () => {
     assert.equal(typeof reponse, 'string');
     assert.notEqual(reponse, replyTo('aide'));
   });
+
+  it('donne la même réponse à « bonjour » et à « salut »', () => {
+    assert.equal(replyTo('bonjour'), replyTo('salut'));
+  });
+
+  it('envoie le verre à la colonne à verre', () => {
+    assert.match(replyTo('  Verre '), /colonne à verre/);
+  });
+
+  it('ne jette jamais les piles à la poubelle', () => {
+    assert.match(replyTo('pile'), /jamais à la poubelle/);
+  });
+
+  it('donne une réponse différente pour chaque déchet connu', () => {
+    const dechets = ['plastique', 'verre', 'papier', 'carton', 'pile', 'compost'];
+    assert.equal(new Set(dechets.map(replyTo)).size, dechets.length);
+  });
 });
